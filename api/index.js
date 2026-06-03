@@ -237,15 +237,41 @@ builder.defineStreamHandler(async ({ type, id }) => {
   }
 });
 
-// ─── VERCEL EXPORT ────────────────────────────────────────────────────────────
-// Get the Stremio router interface and export it for Vercel's serverless handler
+// ─── VERCEL NATIVE HANDLER ────────────────────────────────────────────────────
 const addonInterface = builder.getInterface();
-const { getRouter } = require('stremio-addon-sdk/src/getRouter');
-const router = getRouter(addonInterface);
 
-module.exports = (req, res) => {
-  router(req, res, () => {
-    res.statusCode = 404;
-    res.end();
-  });
+module.exports = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+
+  // Parse path segments manually to avoid routing package bugs
+  const urlPath = req.url.split('?')[0];
+
+  if (urlPath === '/' || urlPath === '/manifest.json') {
+    return res.status(200).json(addonInterface.manifest);
+  }
+
+  // Matches path patterns like /catalog/series/an1me_popular.json
+  const match = urlPath.match(/^\/([^/]+)\/([^/]+)\/([^/]+)\.json$/);
+  if (match) {
+    const [_, resource, type, encodedId] = match;
+    const id = decodeURIComponent(encodedId);
+
+    // Extract query variables for searching or skipping pages
+    const urlObj = new URL(req.url, `http://${req.headers.host}`);
+    const extra = {};
+    if (urlObj.searchParams.has('search')) extra.search = urlObj.searchParams.get('search');
+    if (urlObj.searchParams.has('skip')) extra.skip = urlObj.searchParams.get('skip');
+
+    try {
+      const result = await addonInterface.get(resource, { type, id, extra });
+      return res.status(200).json(result);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.message });
+    }
+  }
+
+  return res.status(404).json({ error: 'Not found' });
 };
