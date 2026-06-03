@@ -1,17 +1,20 @@
 {
+  "name": "Philip Anime Providers",
+  "version": "1.0.0",
+  "id": "an1me-stremio-providers",
+  "description": "Greek subtitles anime provider repository.",
+  "manifestVersion": 1,
   "providers": [
     {
       "id": "an1me",
       "name": "An1me (GR)",
-      "description": "Fetches Greek subbed anime streams from an1me.to.",
-      "version": "1.0.2",
+      "description": "Fetches Greek subbed anime.",
+      "version": "1.0.0",
       "author": "Philip",
       "supportedTypes": ["anime", "tv", "movie"],
-      "filename": "an1me.js",
+      "filename": "providers/an1me.js",
       "enabled": true,
-      "contentLanguage": ["el"],
-      "formats": ["mkv", "mp4"],
-      "supportsExternalPlayer": true
+      "contentLanguage": ["el"]
     }
   ]
 }
