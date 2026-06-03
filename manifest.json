@@ -1,0 +1,21 @@
+{
+  id an1me-stremio-providers,
+  name Philip's Anime Providers,
+  description Greek subtitles anime provider repository for Nuvio.,
+  version 1.0.0,
+  author Philip,
+  manifestVersion 1,
+  providers [
+    {
+      id an1me,
+      name An1me (GR),
+      description Fetches Greek subbed anime streams directly from an1me.to via on-demand page traversal.,
+      version 1.0.0,
+      author Philip,
+      supportedTypes [anime, tv, movie],
+      filename providersan1me.js,
+      enabled true,
+      contentLanguage [el]
+    }
+  ]
+}
