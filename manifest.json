@@ -1,10 +1,4 @@
 {
-  "id": "an1me-stremio-providers",
-  "name": "Philip Anime Providers",
-  "description": "Greek subtitles anime provider repository for Nuvio.",
-  "version": "1.0.2",
-  "author": "Philip",
-  "manifestVersion": 1,
   "providers": [
     {
       "id": "an1me",
@@ -15,7 +9,9 @@
       "supportedTypes": ["anime", "tv", "movie"],
       "filename": "an1me.js",
       "enabled": true,
-      "contentLanguage": ["el"]
+      "contentLanguage": ["el"],
+      "formats": ["mkv", "mp4"],
+      "supportsExternalPlayer": true
     }
   ]
 }
