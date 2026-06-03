@@ -12,7 +12,7 @@
       "version": "1.0.0",
       "author": "Philip",
       "supportedTypes": ["anime", "tv", "movie"],
-      "filename": "providers/an1me.js",
+      "filename": "an1me.js",
       "enabled": true,
       "contentLanguage": ["el"]
     }
