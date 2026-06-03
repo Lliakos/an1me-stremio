@@ -7,15 +7,9 @@
     {
       "id": "an1me",
       "name": "An1me (GR)",
-      "description": "Fetches Greek subbed anime streams from an1me.to.",
-      "version": "1.0.2",
-      "author": "Philip",
-      "supportedTypes": ["anime", "tv", "movie"],
-      "filename": "providers/an1me.js",
-      "enabled": true,
-      "contentLanguage": ["el"],
-      "formats": ["mp4", "mkv"],
-      "supportsExternalPlayer": true
+      "filename": "an1me.js",
+      "supportedTypes": ["tv", "movie"],
+      "enabled": true
     }
   ]
 }
