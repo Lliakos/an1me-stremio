@@ -2,16 +2,17 @@
   "name": "an1me-stremio",
   "version": "1.0.0",
   "description": "Stremio addon for an1me.to - Greek anime streaming",
-  "main": "addon.js",
+  "main": "api/index.js",
   "scripts": {
+    "start": "node api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "An1me Addon",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.2.0",
-    "node-fetch": "^3.3.2",
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^2.7.0",
     "stremio-addon-sdk": "^1.6.10"
   }
 }
